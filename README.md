@@ -6,6 +6,13 @@ This e-commerce app was created using React framework.
 
 The idea is to create a basic client-side e-commerce app making use of some user stories.
 
+### User Stories
+
+- As a **_customer_**, I should be able to **_see the available products_**
+- As a **_customer_**, I should be able to **_search the available products_**
+- As a **_customer_**, I should be able to **_add products to my shopping cart_**
+- As an **_administrator_**, I should be able to **_add, edit and remove products_**
+
 ## Process
 
 ### Wireframe
@@ -16,7 +23,7 @@ Wireframing the app was the first step. From here I can get details to feed in m
 <img src="img/wf-products.JPG" alt="products" height="300"/>
 <img src="img/wf-cart.JPG" alt="cart" height="300"/>
 
-Designed with a _"mobile first"_ approach. Making it easier to work with responsiveness.
+Designed with a _"mobile first"_ approach. Making it easier to build on with responsiveness.
 
 ### Progress
 
