@@ -12,11 +12,15 @@ The idea is to create a basic client-side e-commerce app making use of some user
 
 Wireframing the app was the first step. From here I can get details to feed in my kanban board.
 
-### Approach
+<img src="img/wf-home.JPG" alt="home" height="300"/>
+<img src="img/wf-products.JPG" alt="products" height="300"/>
+<img src="img/wf-cart.JPG" alt="cart" height="300"/>
 
 Designed with a _"mobile first"_ approach. Making it easier to work with responsiveness.
 
-Development steps making use of a kanban board. This helps me get an overview of the tasks at hand and keep track of the progress. the kanban board could be Trello or even better [Github projects](https://github.com/carlos-ch/online-shop/projects), which lets me have everything in one place and have the possibility to add some automation to the workflow.
+### Progress
+
+Development steps making use of a kanban board. This helps me get an overview of the tasks at hand and keep track of the progress. the kanban board could be Trello or even better [Github projects](https://github.com/carlos-ch/online-shop/projects), which lets me have everything in one place and it's to add some automation to the workflow.
 
 ## Tech / Framework
 
