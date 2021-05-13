@@ -1,5 +1,8 @@
 import React from 'react';
+import './Layout.scss';
 import { NavLink } from 'react-router-dom';
+import Footer from './footer/Footer';
+import Logo from './logo/Logo';
 
 const links = [
   {
@@ -19,8 +22,9 @@ const links = [
 const Layout = ({ children }) => {
   return (
     <div>
-      <nav>
-        <ul>
+      <nav className="navbar">
+        <Logo />
+        <ul className="navbar-links">
           {links.map((link, index) => (
             <NavLink
               exact
@@ -33,7 +37,8 @@ const Layout = ({ children }) => {
           ))}
         </ul>
       </nav>
-      {children}
+      <main className="main-section">{children}</main>
+      <Footer />
     </div>
   );
 };

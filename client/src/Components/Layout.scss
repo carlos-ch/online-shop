@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  &-links {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    li {
+      margin-right: 1rem;
+    }
+  }
+}
+.main-section {
+  min-height: 100vh;
+}
