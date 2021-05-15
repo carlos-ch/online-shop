@@ -14,12 +14,24 @@ a {
     text-decoration: underline;
   }
   text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  padding-inline-start: 0;
 }
 
 li {
   list-style-type: none;
 }
 
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

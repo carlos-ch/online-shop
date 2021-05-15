@@ -19,21 +19,43 @@
     p {
       color: #eee;
     }
+    span {
+      font-size: 1.5rem;
+      color: #eee;
+      text-decoration-line: underline;
+      &:hover {
+        color: rgb(172, 159, 202);
+      }
+    }
   }
 }
 
 .recommended {
-  h2 {
+  &-heading {
     text-align: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 1rem;
   }
+
+  &-feedback {
+    text-align: center;
+    color: #999;
+    font-size: 2rem;
+  }
+
   &-product-list {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     flex-basis: 320px;
     align-items: center;
-    grid-gap: 15px;
     gap: 25px 30px;
+    @media (min-width: 560px) {
+      flex-flow: row wrap;
+      gap: 25px;
+      justify-content: space-around;
+      margin: 0 auto 50px;
+    }
   }
 }
 
