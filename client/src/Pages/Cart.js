@@ -69,22 +69,29 @@ const Cart = () => {
                   <div className="item-details">
                     <h3 className="item-name">{item.name}</h3>
                     <div className="item-quantity">
+                      <label htmlFor="quantity">Quantity: </label>
                       <input
+                        id="quantity"
                         type="number"
                         min="1"
                         max="10"
                         value={item.quantity}
                         onChange={e => handleChangeCount(e, item)}
                       />
-                      <span className="item-price">$ {item.price}</span>
+                      <span className="item-price"> Price: ${item.price}</span>
                     </div>
                   </div>
                 </article>
               </li>
             ))}
           </ul>
+          {contextValue.length === 0 && (
+            <div className="cart-empty feedback">
+              <h3>Your cart is empty</h3>
+            </div>
+          )}
           <div className="cart-summary-total">
-            <span className="total">${total}</span>
+            <span className="total"> Total: ${total}</span>
           </div>
         </section>
       </div>
