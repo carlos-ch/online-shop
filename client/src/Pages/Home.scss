@@ -1,6 +1,39 @@
+.banner {
+  text-align: center;
+  max-height: 500px;
+  height: 80vh;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  background-image: url(https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);
+  background-size: cover;
+
+  &-text {
+    background-color: #33333370;
+    padding-top: 15%;
+    padding-bottom: 1rem;
+    font-weight: 700;
+    &-main {
+      font-size: 3rem;
+    }
+
+    p {
+      color: #eee;
+    }
+  }
+}
+
 .recommended {
   h2 {
     text-align: center;
+  }
+  &-product-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 320px;
+    align-items: center;
+    grid-gap: 15px;
+    gap: 25px 30px;
   }
 }
 

@@ -3,6 +3,7 @@ import './Home.scss';
 import Layout from '../Components/Layout';
 import ProductCard from '../Components/productCard/ProductCard';
 import fetchData from '../utils/api';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [productList, setProductList] = useState([]);
@@ -19,19 +20,24 @@ const Home = () => {
   return (
     <Layout>
       <div className="banner">
-        <img
-          src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-          alt="banner"
-          className="banner-img"
-        />
+        <div className="banner-text">
+          <p className="banner-text-main">Anniversary SALE</p>
+          <Link to="/products" className="link-products-page">
+            <p>Take me to products</p>
+          </Link>
+        </div>
       </div>
       <div className="recommended">
         <h2>Recommended</h2>
-        {productList.map(el => (
-          <ProductCard data={el} />
-        ))}
+        <div className="recommended-product-list">
+          {productList.map(el => (
+            <ProductCard data={el} />
+          ))}
+        </div>
       </div>
-      <a className="more-products-link">Take me to products</a>
+      <Link className="more-products-link" to="/products">
+        Take me to products
+      </Link>
     </Layout>
   );
 };
