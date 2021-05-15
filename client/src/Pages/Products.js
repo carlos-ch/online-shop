@@ -67,8 +67,12 @@ const Products = () => {
   return (
     <Layout>
       <div className="section-wrapper">
-        <form role="search" onSubmit={e => handlerSubmit(e)}>
-          <div>
+        <form
+          className="products-search-form"
+          role="search"
+          onSubmit={e => handlerSubmit(e)}
+        >
+          <div className="inner-wrapper">
             <label htmlFor="searchBox">Search</label>
             <input
               type="search"
@@ -102,7 +106,9 @@ const Products = () => {
               >
                 Prev
               </button>
-              <span>{pageNr}</span>
+              <span>
+                {pageNr} / {totalPages}
+              </span>
               <button
                 className="pagination-button"
                 onClick={handleNextPage}
@@ -114,7 +120,7 @@ const Products = () => {
           </div>
         ) : (
           <h3 className="products-feedback feedback">
-            Couldn't load. Try again.
+            Couldn't load. Please try again.
           </h3>
         )}
       </div>
