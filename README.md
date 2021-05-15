@@ -2,6 +2,8 @@
 
 This e-commerce app was created using React framework.
 
+![snapshot](https://media.giphy.com/media/MVj77uFjgbVTDLXE6c/giphy.gif)
+
 ## Motivation
 
 The idea is to create a basic client-side e-commerce app making use of some user stories.
