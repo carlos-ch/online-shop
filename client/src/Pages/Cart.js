@@ -5,7 +5,36 @@ import { CartContext } from '../contexts/CartContext';
 
 const Cart = () => {
   const [contextValue, setContext] = useContext(CartContext);
-  const [productsInCart, setProductsInCart] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  // if quantity of product is changed
+  const handleChangeCount = (e, item) => {
+    const parsedInt = parseInt(e.target.value) || 0;
+
+    setContext(currentCart => {
+      const productIndex = currentCart.findIndex(i => i.id === item.id);
+      let updatedCart = [...currentCart];
+
+      /* if already in cart */
+      if (productIndex !== -1) {
+        updatedCart = [
+          ...currentCart.slice(0, productIndex),
+          { ...item, quantity: parsedInt },
+          ...currentCart.slice(productIndex + 1),
+        ];
+      }
+      return updatedCart;
+    });
+  };
+
+  useEffect(() => {
+    const subtotalList = contextValue.map(
+      product => product.price * product.quantity
+    );
+    if (subtotalList.length > 0)
+      setTotal(subtotalList.reduce((acc, curr) => acc + curr));
+    console.log({ total });
+  }, [contextValue, total]);
 
   console.log({ contextValue });
 
@@ -27,19 +56,21 @@ const Cart = () => {
                     <div className="item-quantity">
                       <input
                         type="number"
-                        min="0"
+                        min="1"
                         max="10"
                         value={item.quantity}
+                        onChange={e => handleChangeCount(e, item)}
                       />
-                      <span className="item-price">
-                        $ {Math.floor(item.price)}
-                      </span>
+                      <span className="item-price">$ {item.price}</span>
                     </div>
                   </div>
                 </article>
               </li>
             ))}
           </ul>
+          <div className="cart-summary-total">
+            <span className="total">${total}</span>
+          </div>
         </section>
       </div>
     </Layout>
