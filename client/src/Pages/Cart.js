@@ -27,20 +27,29 @@ const Cart = () => {
     });
   };
 
+  // remove item from cart
+  const handleRemove = id => {
+    setContext(currentCart => {
+      let updatedCart = currentCart.filter(el => el.id !== id);
+      return updatedCart;
+    });
+  };
+
   useEffect(() => {
     const subtotalList = contextValue.map(
       product => product.price * product.quantity
     );
-    if (subtotalList.length > 0)
+    if (subtotalList.length > 0) {
       setTotal(subtotalList.reduce((acc, curr) => acc + curr));
-    console.log({ total });
+    } else {
+      setTotal(0);
+    }
   }, [contextValue, total]);
-
-  console.log({ contextValue });
 
   return (
     <Layout>
-      Shopping cart
+      <h1 className="cart-heading"> Shopping cart</h1>
+
       <div className="cart-summary-wrapper">
         <section className="cart-summary section">
           <h3 className="section-heading">Summary</h3>
@@ -48,6 +57,12 @@ const Cart = () => {
             {contextValue.map(item => (
               <li>
                 <article className="item">
+                  <button
+                    className="item-remove-button"
+                    onClick={() => handleRemove(item.id)}
+                  >
+                    Remove
+                  </button>
                   <div className="item-img-wrapper">
                     <img src={item.defaultImage} alt="product" />
                   </div>
