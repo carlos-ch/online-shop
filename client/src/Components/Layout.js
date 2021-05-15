@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Layout.scss';
 import { NavLink } from 'react-router-dom';
 import Footer from './footer/Footer';
 import Logo from './logo/Logo';
+import { CartContext } from '../contexts/CartContext';
 
 const links = [
   {
@@ -20,6 +21,7 @@ const links = [
 ];
 
 const Layout = ({ children }) => {
+  const [contextValue, setContext] = useContext(CartContext);
   return (
     <div>
       <nav className="navbar">
@@ -36,6 +38,11 @@ const Layout = ({ children }) => {
             </NavLink>
           ))}
         </ul>
+        {contextValue.length > 0 && (
+          <div className="notification-badge">
+            <span>{contextValue.length}</span>
+          </div>
+        )}
       </nav>
       <main className="main-section">{children}</main>
       <Footer />
