@@ -42,7 +42,7 @@ The API server is included as a sibling directory of the client directory.
 
 ## Installation
 
-To install packages, run
+To install packages, run from the `/client` folder
 
 ```bash
 npm install
@@ -57,6 +57,11 @@ npm start
 ```
 
 ## Roadmap
+
+Next stages of the app could include:
+- Persist carts in localStorage or a database
+- Improve user experience by adding toast notifications when item is added to cart
+- User or admin login
 
 ## Contributing
 
