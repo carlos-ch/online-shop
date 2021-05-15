@@ -11,7 +11,6 @@ The idea is to create a basic client-side e-commerce app making use of some user
 - As a **_customer_**, I should be able to **_see the available products_**
 - As a **_customer_**, I should be able to **_search the available products_**
 - As a **_customer_**, I should be able to **_add products to my shopping cart_**
-- As an **_administrator_**, I should be able to **_add, edit and remove products_**
 
 ## Process
 
