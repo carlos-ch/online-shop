@@ -33,7 +33,7 @@ const ProductCard = ({ data }) => {
         <img src={data.defaultImage} alt={data.name} className="card-image" />
         <h3 className="card-title">{data.name}</h3>
         <div className="card-price-wrapper">
-          <span className="card-price">$ {Math.floor(data.price)}</span>
+          <span className="card-price">$ {data.price}</span>
           {/* <span className="card-price-badge">{data.discount}%</span> */}
         </div>
         <button className="card-cta" onClick={handleAddToCart}>

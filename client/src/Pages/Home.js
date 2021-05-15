@@ -4,6 +4,7 @@ import Layout from '../Components/Layout';
 import ProductCard from '../Components/productCard/ProductCard';
 import fetchData from '../utils/api';
 import { Link } from 'react-router-dom';
+import { roundPrice } from '../utils/roundPrice';
 
 const Home = () => {
   const [productList, setProductList] = useState([]);
@@ -12,7 +13,8 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       const data = await fetchData(params);
-      setProductList(data);
+
+      setProductList(roundPrice(data));
     };
     fetchProducts();
   }, []);
