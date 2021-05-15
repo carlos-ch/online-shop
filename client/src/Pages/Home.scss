@@ -1,0 +1,66 @@
+.banner {
+  text-align: center;
+  max-height: 500px;
+  height: 80vh;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  background-image: url(https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80);
+  background-size: cover;
+
+  &-text {
+    background-color: #33333370;
+    padding-top: 15%;
+    padding-bottom: 1rem;
+    font-weight: 700;
+    &-main {
+      font-size: 3rem;
+    }
+
+    p {
+      color: #eee;
+    }
+    span {
+      font-size: 1.5rem;
+      color: #eee;
+      text-decoration-line: underline;
+      &:hover {
+        color: rgb(172, 159, 202);
+      }
+    }
+  }
+}
+
+.recommended {
+  &-heading {
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 1rem;
+  }
+
+  &-feedback {
+    text-align: center;
+    color: #999;
+    font-size: 2rem;
+  }
+
+  &-product-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-basis: 320px;
+    align-items: center;
+    gap: 25px 30px;
+    @media (min-width: 560px) {
+      flex-flow: row wrap;
+      gap: 25px;
+      justify-content: space-around;
+      margin: 0 auto 50px;
+    }
+  }
+}
+
+.more-products-link {
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  color: #191919;
+}
