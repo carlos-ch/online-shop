@@ -4,65 +4,119 @@ import ProductCard from '../Components/productCard/ProductCard';
 import fetchData from '../utils/api';
 import { pageSize, totalItems } from '../utils/constants';
 import { roundPrice } from '../utils/roundPrice';
+import './Products.scss';
 
 const Products = () => {
-  const [productList, setProductList] = useState([]);
-  const [pageNr, setPageNr] = useState(1);
-  // const [params, setParams] = useState({});
   const totalPages = Math.floor(totalItems / pageSize);
 
+  const [productList, setProductList] = useState([]);
+  const [pageNr, setPageNr] = useState(1);
+  const [isFetching, setIsFetching] = useState(false);
+
   const onPageChange = pageNum => {
-    console.log({ pageNum });
     setPageNr(pageNum);
   };
   const handlePrevPage = () => {
     onPageChange(Math.max(pageNr - 1, 1));
-    console.log('ddesde el handlePrevPage', { pageNr });
   };
   const handleNextPage = () => {
-    console.log('ddesde el handleNextPage', { pageNr });
     onPageChange(Math.min(pageNr + 1, totalPages));
+  };
+  const [input, setInput] = useState('');
+  const [search, setSearch] = useState('');
+
+  const onInput = e => {
+    console.log(input);
+    setInput(e.target.value);
+  };
+
+  //update search state and reset page number
+  const onSearch = query => {
+    console.log({ query });
+    onPageChange(1);
+    setSearch(query);
+  };
+
+  const handlerSubmit = e => {
+    e.preventDefault();
+    onSearch(input);
   };
 
   useEffect(() => {
-    const params = { endpoint: '/products', limit: pageSize, page: pageNr };
+    const params = {
+      q: search,
+      limit: pageSize,
+      page: pageNr,
+    };
 
     const fetchProducts = async () => {
-      const data = await fetchData(params);
+      try {
+        setIsFetching(true);
 
-      setProductList(roundPrice(data));
+        const data = await fetchData(params);
+        setIsFetching(false);
+
+        setProductList(roundPrice(data));
+      } catch (error) {
+        setIsFetching(false);
+      }
     };
-    console.log('ddesde el useeffect!!!', { productList });
     fetchProducts();
-  }, [pageNr]);
+  }, [pageNr, search]);
 
   return (
     <Layout>
       <div className="section-wrapper">
-        <input type="text" className="products-search-box" />
-        <ul className="products-list">
-          {productList.map(el => (
-            <li key={el.id}>
-              <ProductCard data={el} />
-            </li>
-          ))}
-        </ul>
-        <div className="pagination">
-          <button
-            className="page-button"
-            onClick={handlePrevPage}
-            disabled={pageNr === 0}
-          >
-            Prev
-          </button>
-          <button
-            className="page-button"
-            onClick={handleNextPage}
-            disabled={pageNr === totalPages}
-          >
-            Next
-          </button>
-        </div>
+        <form role="search" onSubmit={e => handlerSubmit(e)}>
+          <div>
+            <label htmlFor="searchBox">Search</label>
+            <input
+              type="search"
+              id="searchBox"
+              name="q"
+              autoComplete="off"
+              placeholder="Type here"
+              className="products-search-box"
+              aria-label="Search for product"
+              onChange={e => onInput(e)}
+            />
+            <button>Search</button>
+          </div>
+        </form>
+        {isFetching ? (
+          <h3 className="products-loader loader">Loading...</h3>
+        ) : productList.length > 0 ? (
+          <div className="products-wrapper">
+            <div className="products-list">
+              {productList.map(el => (
+                <div key={el.id}>
+                  <ProductCard data={el} />
+                </div>
+              ))}
+            </div>
+            <div className="pagination">
+              <button
+                className="pagination-button"
+                onClick={handlePrevPage}
+                disabled={pageNr === 1}
+              >
+                Prev
+              </button>
+              <span>{pageNr}</span>
+              <button
+                className="pagination-button"
+                onClick={handleNextPage}
+                disabled={pageNr === totalPages}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        ) : (
+          <h3 className="products-feedback feedback">
+            Couldn't load. Try again.
+          </h3>
+        )}
       </div>
     </Layout>
   );
