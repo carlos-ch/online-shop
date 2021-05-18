@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from '../../contexts/CartContext';
+import Toast from '../toast/Toast';
 import './ProductCard.scss';
 
 const ProductCard = ({ data }) => {
   const productId = data.id;
+
+  const [toastNotification, setToastNotification] = useState(false);
   const [contextValue, setContext] = useContext(CartContext);
-  // add product {id , and quantity} to cart
+  // add product and quantity to cart
   const handleAddToCart = () => {
     let updatedCart = [];
     setContext(oldCart => {
@@ -24,6 +27,7 @@ const ProductCard = ({ data }) => {
       }
       return updatedCart;
     });
+    setToastNotification(true);
   };
 
   return (
@@ -32,12 +36,17 @@ const ProductCard = ({ data }) => {
         <img src={data.defaultImage} alt={data.name} className="card-image" />
         <h3 className="card-title">{data.name}</h3>
         <div className="card-price-wrapper">
-          <span className="card-price">$ {data.price}</span>
-          {/* <span className="card-price-badge">{data.discount}%</span> */}
+          <span className="card-price">${data.price}</span>
         </div>
         <button className="card-cta" onClick={handleAddToCart}>
           Add to cart
         </button>
+        {toastNotification && (
+          <Toast
+            toastNotification={toastNotification}
+            setToastNotification={setToastNotification}
+          />
+        )}
       </div>
     </article>
   );
