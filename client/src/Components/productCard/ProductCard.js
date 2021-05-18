@@ -22,7 +22,6 @@ const ProductCard = ({ data }) => {
         /* if new to cart */
         updatedCart = [...oldCart, { ...data, quantity: 1 }];
       }
-      console.log(updatedCart);
       return updatedCart;
     });
   };
